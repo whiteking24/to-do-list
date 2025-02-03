@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>ToDo</title>
+        <style>
+            body {
+                background-color: violet;
+                margin: 0;
+                height: 100vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+    
+            div {
+                background: white;
+                padding: 20px;
+                border-radius: 20px;
+                box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.2);
+                text-align: center;
+                width: 400px;
+                font-family: 'Verdana', sans-serif;
+                
+            }
+            ul{
+                list-style-type: none;
+                padding: 0;
+            }
+            li{
+                display: flex;
+                align-items:center ;
+                gap: 10px;
+                margin: 5px 0;
+                font-size: 20px; 
+                font-family: 'Verdana', sans-serif;
+                font-weight: 500;
+                
+            }
+            input[type="checkbox"]{
+                cursor: pointer;
+                width: 20px;
+                height: 20px
+            }
+            input[type="text"]{
+                height: 20px;
+                width: 250px;
+                border-radius: 5px;
+                background-color:white;
+                color: black;
+                transition: 0.3s ease-in-out;
+            }
+    
+            h2 {
+                color: black;
+            }
+            .container{
+                text-align: center;
+                width: 350px; ;
+            }
+            .allign{
+                width: 360px;
+                height: 80px;
+                margin-top: 5px;
+                padding: 20px;
+            }
+            .complete {
+                width: 360px; 
+                text-align: center; 
+                margin-top: 20px; 
+            }
+            button {
+                background-color: #4CAF50; /* Green color */
+                color: white;
+                border: none;
+                padding: 10px 20px;
+                font-size: 11px;
+                font-weight: bold;
+                cursor: pointer;
+                border-radius: 10px; /* Rounded corners */
+                transition: 0.3s ease-in-out;
+            }
+            
+            /* Hover effect */
+            button:hover {
+                background-color: #45a049; /* Darker green */
+                transform: scale(1.05); /* Slightly enlarge */
+            }
+            
+            /* Button focus effect */
+            button:focus {
+                outline: none;
+                box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.5);
+            }
+            
+            
+            
+        </style>
+    </head>
+    <body>
+        <div>
+            <div class="allign">
+                <h2>ToDo List</h2>
+                <p>Keep your task tracked</p>
+            </div>
+        <ul id="todo">
+        </ul>
+        <div class="container">
+        <input id="addtask" type="text" placeholder="Add your task">
+        <button id="submit">AddTask</button>
+        </div>
+        <div class="complete">
+        <h2>Completed</h2>
+        </div>
+        <ul id="donelist">
+        </ul>
+        
+        </div>
+   
+    <script>
+//creating an object for button,input,ul-1,ul-2 by passing thier id as argument
+//creating an array called 'list' to store the task which we add
+//adding eventlistener to the button when it was clicked
+
+        let submit=document.getElementById('submit');
+        let addTask=document.getElementById('addtask');
+        let todoList=document.getElementById('todo');
+        let doneList=document.getElementById('donelist');
+        let list=new Array();
+//2 arguments=> 'click',arrow function
+//arrow function=>when textfield is not eq to empty string then it has to push the value to the array called 'list'
+//using dom dynamically creating an element tag (li,checkbox)
+//using appenchild()adding the task into li as checkbox
+        submit.addEventListener('click',(event)=>{
+            if(addtask.value != ''){
+                let taskText=addTask.value;
+            list.push(taskText); 
+            //todoList.innerHTML +='<li  id="'+(list.length-1)+'"><button onclick="complete('+(list.length-1)+')">' +addTask.value+ '</button></li>';
+            
+            let li=document.createElement('li');
+            let checkbox=document.createElement('input');
+            checkbox.type="checkbox";
+
+            li.appendChild(checkbox);
+            li.appendChild(document.createTextNode(taskText));
+//when checkbox was checked it will add to the completed
+            checkbox.addEventListener('change',(event)=>{
+                if(event.target.checked){
+                    complete(taskText,li);
+                }
+            });
+            
+            todoList.appendChild(li);
+            addTask.value='';
+            }
+        });
+//complete() =>adds the task which have been completed by clicking the button
+//creating completeList variable & creating html element li & storing the task as text-content into completeList
+//finally removing the task from todo list & added to the completed
+        function complete(task,listItem){
+            //doneList.innerHTML +=`<li>${addTask.value}</li>`;
+            //document.getElementById(id).style.display="none";
+            let comli=document.createElement('li');
+            comli.textContent=task;
+            doneList.appendChild(comli);
+            listItem.remove();
+        } 
+    </script>
+</body>
+</html>
