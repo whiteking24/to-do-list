@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ToDo List</title>
+    <link rel="stylesheet" href="style.css"> <!-- Link to external CSS file -->
+</head>
+<body>
+    <div class="container">
+        <!-- Heading Section -->
+        <h2 class="center-heading">ToDo List</h2>
+        <p class="center-heading">Keep your tasks tracked</p>
+        
+        <!-- Input Section -->
+        <div class="input-section">
+            <input id="addtask" type="text" placeholder="Add your task">
+            <button id="submit">Add Task</button>
+        </div>
+
+        <!-- Box for Columns -->
+        <div class="columns-box">
+            <!-- Two Columns -->
+            <div class="columns">
+                <!-- Column 1: Yet to Complete -->
+                <div class="column">
+                    <h3>Yet to Complete</h3>
+                    <ul id="todo"></ul>
+                </div>
+
+                <!-- Column 2: Completed -->
+                <div class="column">
+                    <h3>Completed</h3>
+                    <ul id="donelist"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script> <!-- Link to external JavaScript file -->
+</body>
+</html>
