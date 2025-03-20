@@ -1,39 +1,31 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>ToDo List</title>
-    <link rel="stylesheet" href="style.css"> <!-- Link to external CSS file -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>to-do-list</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <!-- Heading Section -->
-        <h2 class="center-heading">ToDo List</h2>
-        <p class="center-heading">Keep your tasks tracked</p>
-        
-        <!-- Input Section -->
-        <div class="input-section">
-            <input id="addtask" type="text" placeholder="Add your task">
-            <button id="submit">Add Task</button>
-        </div>
-
-        <!-- Box for Columns -->
-        <div class="columns-box">
-            <!-- Two Columns -->
-            <div class="columns">
-                <!-- Column 1: Yet to Complete -->
-                <div class="column">
-                    <h3>Yet to Complete</h3>
-                    <ul id="todo"></ul>
-                </div>
-
-                <!-- Column 2: Completed -->
-                <div class="column">
-                    <h3>Completed</h3>
-                    <ul id="donelist"></ul>
+        <div class="stats-container">
+            <div class="details">
+                <h1>Todo App</h1>
+                <p>Keep it up</p>
+                <div id="progressBar">
+                    <div id="progress"></div>
                 </div>
             </div>
+            <div class="stats-numbers">
+                <p id="numbers">2/3</p>
+            </div>
         </div>
+       <form action="">
+        <input type="text" id="taskInput" placeholder="write your task">
+        <button id="newTask" type="submit">+</button>
+       </form> 
+       <ul id="task-list"></ul>
     </div>
-    <script src="script.js"></script> <!-- Link to external JavaScript file -->
+    <script src="script.js"></script>
 </body>
 </html>
