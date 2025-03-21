@@ -3,12 +3,16 @@ let tasks = [];
 const addTask = () => {
     const taskInput = document.getElementById('taskInput');
     const text = taskInput.value.trim(); // Corrected: use 'value' instead of 'ariaValueMax'
-    if (text) {
+    if (text && !tasks.some(task => task.text ===text)) {
         tasks.push({ text: text, completed: false });
         updateTaskList();
         updateStats();
         taskInput.value = ""; // Clear the input field after adding a task
-    }
+        }
+        else if(tasks.some(task => task.text === text)){
+            alert("Tasks already exists!")
+        }
+
 };
 
 const toggleTaskComplete = (index) => {
